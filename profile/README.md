@@ -83,36 +83,6 @@ cd parqtel-oss && cargo build --release
 
 Full walkthrough in the [documentation](https://parqtel.github.io).
 
-## Featured repositories
-
-<a href="https://github.com/parqtel/parqtel-oss"><picture><source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=parqtel&repo=parqtel-oss&show_icons=true&hide_border=true&theme=dark"><source media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=parqtel&repo=parqtel-oss&show_icons=true&hide_border=true"><img src="https://github-readme-stats.vercel.app/api/pin/?username=parqtel&repo=parqtel-oss&show_icons=true&hide_border=true" alt="parqtel-oss"></picture></a>
-<a href="https://github.com/parqtel/parqtel-web"><picture><source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=parqtel&repo=parqtel-web&show_icons=true&hide_border=true&theme=dark"><source media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=parqtel&repo=parqtel-web&show_icons=true&hide_border=true"><img src="https://github-readme-stats.vercel.app/api/pin/?username=parqtel&repo=parqtel-web&show_icons=true&hide_border=true" alt="parqtel-web"></picture></a>
-<a href="https://github.com/parqtel/parqtel.github.io"><picture><source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=parqtel&repo=parqtel.github.io&show_icons=true&hide_border=true&theme=dark"><source media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=parqtel&repo=parqtel.github.io&show_icons=true&hide_border=true"><img src="https://github-readme-stats.vercel.app/api/pin/?username=parqtel&repo=parqtel.github.io&show_icons=true&hide_border=true" alt="parqtel.github.io"></picture></a>
-
-| Repository | What it is |
-|------------|------------|
-| [**parqtel-oss**](https://github.com/parqtel/parqtel-oss) | The core engine — ingest, store, query, alert, visualize, MCP. |
-| [**parqtel-web**](https://github.com/parqtel/parqtel-web) | The marketing website (Astro + Tailwind). |
-| [**parqtel.github.io**](https://github.com/parqtel/parqtel.github.io) | The public documentation site. |
-
-## Architecture at a glance
-
-```mermaid
-flowchart LR
-  A[OTLP gRPC :4317] --> I[Ingest]
-  B[OTLP HTTP] --> I
-  C[remote_write] --> I
-  D[Kafka] --> I
-  I --> W[WAL + bounded buffer]
-  W --> P[(Local Parquet)]
-  W --> S[(S3 / object store)]
-  P --> Q[Query engine]
-  S --> Q
-  Q --> U[Web UI · Grafana · Prometheus API · MCP]
-```
-
-## Community
-
 - **Docs:** [parqtel.github.io](https://parqtel.github.io)
 - **Contributing:** [CONTRIBUTING.md](https://github.com/parqtel/parqtel-oss/blob/main/CONTRIBUTING.md)
 - **Code of conduct:** [CODE_OF_CONDUCT.md](https://github.com/parqtel/parqtel-oss/blob/main/CODE_OF_CONDUCT.md)
